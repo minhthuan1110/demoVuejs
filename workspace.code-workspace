@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../Project/demonew"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "themes_demo",
+		"liveServer.settings.port": 5501
+	}
+}

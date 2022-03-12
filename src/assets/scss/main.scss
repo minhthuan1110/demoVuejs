@@ -1,0 +1,508 @@
+ 
+ @import './responsive';
+ @import'./grid';
+// font 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+$Inter:'Inter', sans-serif;
+
+// config
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+
+//  color group page;
+
+    $text-color: #878787;
+    $title-text-color:#222;
+    $color-h:#fd4014;
+    $white-color:#fff;
+
+
+// transison
+
+  @mixin transison {
+    transition-property: all;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+
+@mixin transisons($text,$time) {
+transition-property: $text;
+transition-duration: $time;
+transition-timing-function: ease;
+transition-delay: 0s;
+}
+
+@mixin  animation($name,$time) {
+    animation: $name $time ;
+    -moz-animation: $name $time ;
+    -webkit-animation: $name $time ;
+    -o-animation: $name $time ;
+}
+@mixin  animations($name,$time) {
+    animation: $name $time infinite ;
+    -moz-animation: $name $time infinite;
+    -webkit-animation: $name $time infinite ;
+    -o-animation: $name $time infinite;
+}
+ 
+@keyframes gowup {
+    0% {
+        top:95px;
+        opacity: 0;
+    }
+    100%{
+        top:70px;
+        opacity:1;
+    }
+}
+
+@keyframes enlarge {
+    0% {
+        font-size:20px;
+    }
+    100%{
+        font-size:22px;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0) ;
+    }
+    100%{
+        transform: rotate(360deg) ;
+    }
+}
+ 
+@keyframes gowdown {
+    0% {
+        top:40%;
+        opacity: 0;
+    }
+    100%{
+        top:50%;
+        opacity:1;
+        display: block;
+    }
+}
+
+@keyframes gowleft {
+    0% {
+        left:-60%
+    }
+    100%{
+        left:0;
+    }
+}
+
+@keyframes gowright {
+    0% {
+        right:0
+    }
+    100%{
+        right:20%;
+    }
+}
+
+@keyframes zoompin { 
+    0% {
+        box-shadow: 0 0 0px 1px rgba(255,255,255,.5);
+    }
+    100% { 
+        box-shadow: 0 0 12px 6px rgba(255, 255, 255, 0.637);
+    }
+}
+
+@keyframes zoompins { 
+    0% {
+        opacity: 1;
+        background-color:rgba(223, 215, 215, 0.678);
+        box-shadow: 0 0 0px 1px rgba(255,255,255,.5);
+    }
+    100% { 
+        width: 80%;
+        opacity: 0.2;
+        height:80%;
+        background-color:rgba(223, 215, 215, 0.329);
+        box-shadow: 0 0 12px 8px rgba(255, 255, 255, 0.315);
+    }
+}
+
+// button
+
+.btn_product {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    font-size: 14px;
+    font-weight: 600;
+    background: #fff;
+    color: #222;
+    padding: 12px 20px;
+    box-shadow: 1px 1px 0 0 rgb(0 0 0 / 10%);
+    min-width: 150px;
+    line-height: 20px;
+    text-align: center;
+    transform: translateX(-50%);
+    font-family: $Inter;
+}
+
+.sale-product {
+    width: 100%;
+    height:auto;
+    position: relative;
+
+    &:hover .btn-sale-product-left {
+        opacity: 1;
+    }
+    &:hover .btn-sale-product-right {
+        opacity: 1;
+    }
+    &:hover .btn-sale-product-left i {
+        font-size: 40px;
+    }
+    &:hover .btn-sale-product-right i {
+        font-size: 40px;
+    }
+
+    .show_sale-product{
+        width: 100%;
+        height: auto;
+        .sale-product-item {
+            padding: 0 12px;
+        }
+    }
+}
+
+
+.sale-product-imgs {
+    width: 100%;
+    height:345px;
+    @include transisons(all,.4s);
+    position: relative;
+
+    .sale-product-img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display:block;
+        position: relative;
+
+       
+    }
+    .sale_product-img-after {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display:none;
+    }
+
+    &:hover > .sale-product-imglink .sale-product-img {
+        display:none;
+    }
+    &:hover >.sale-product-imglink .sale_product-img-after{
+        display:block;
+    }
+    &:hover > .sale-product-btn {
+        display: block;
+        @include animation(gowdown,.5s);
+    }
+    &:hover > .list-icons .icon-link {
+        display: block;
+     
+    }
+    // &:hover > .list-icons .icon-link-ac {
+    //     display: block;
+     
+    // }
+
+}
+.sale-product-imglink:hover + .list-icons .icon-link{
+    opacity: 1;
+}
+
+.list-icons{
+
+    position:absolute;
+    top:12px;
+    left:10px;
+    display:flex;
+    flex-direction: column;
+
+    &:hover .icon-link {
+        opacity: 1;
+    }
+    
+
+    .icon-link {
+      opacity: 0;
+      display: none;
+      text-decoration: none;
+      width:20px;
+      height:20px;
+      font-size: 20px;
+      padding:15px 0;
+      line-height: 20px;
+      color:$title-text-color;
+      @include transisons(all,.4s);
+        > .icon-tile-hert {
+            display:block
+        }
+        > .icon-tile-active  {
+            display: none;
+        }
+      
+        &:hover {
+            color: $color-h;
+        }
+
+        &:hover > .icon-tile-hert {
+            @include animations(enlarge,.6s)
+        }
+        .icon-tile-sync {
+            font-size:22px;
+            display:block;
+        }
+        .icon-tile-sync {
+            display: block;
+            font-size:22px;
+           
+        }
+        .icon-tile-sync-active  {
+            display: none;
+        }
+
+        &:hover > .icon-tile-sync i {
+            @include animations(spin,.6s)
+        }
+    }
+    .icon-link.active {
+        color: violet;
+        > .icon-tile-hert {
+            display: none;
+        }
+        > .icon-tile-active  {
+            display: block;
+        }
+
+        &:hover > .icon-tile-active {
+            @include animations(enlarge,.6s)
+        }
+        .icon-tile-sync {
+            display: none;
+           
+        }
+        .icon-tile-sync-active {
+            display: block;
+            font-size:24px;
+            color:black;
+
+            &:hover {
+                color:$color-h;
+                font-size:24px;
+            }
+        }
+    
+        &:hover > .icon-tile-sync-active i {
+            @include animations(enlarge,.6s)
+        }
+    }
+    
+}
+.sale-product-btn{
+    display:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .item-btn-link {
+        text-decoration: none;
+        margin: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        background: #fff;
+        color: #222;
+        padding: 15px 15px;
+        box-shadow: 1px 1px 0 0 rgb(0 0 0 / 10%);
+        min-width: 150px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 2px;
+        &:hover {
+            background-color:$title-text-color;
+            color:$white-color;
+        }
+    }
+}
+.sale_product-item-title {
+    width: 100%;
+    height:auto;
+
+    .sale_product-link {
+        margin-top: 16px;
+        display: block;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $Inter;
+        letter-spacing: .5px;
+        line-height: 1.428;
+        text-align: center;
+        color:$title-text-color;
+        @include transisons(all,.4s);
+
+        &:hover {
+            color : $color-h;
+        }
+    }
+
+    .sale_product-price {
+        display: block;
+        color: $text-color;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $Inter;
+        letter-spacing: .5px;
+        line-height: 1.428;
+        text-align: center;
+    }
+}
+
+.btn-sale-product-left {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    @include transisons(all,.4s);
+    transform: translateY(-50%);
+    i {
+        font-size:10px;
+        @include transisons(all,.4s);
+        font-weight:700;
+        &:hover {
+            color:red;
+            cursor: pointer;
+        }
+    }
+}
+.btn-sale-product-right {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    @include transisons(all,.4s);
+    i {
+        @include transisons(all,.4s);
+        font-size:10px;
+        &:hover {
+            color:red;
+            cursor: pointer;
+        }
+    }
+}
+.moldal--show {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+
+.modal-show_sidebar {
+    position:absolute;
+    width: 80%;
+    height:100%;
+    background-color: #fff;
+    left: -80%;
+    z-index: 101;
+    @include animation(gowlright,.2s);
+}
+
+.container1 {
+    width: 100%;
+    height:auto;
+    text-align:center;
+    margin-bottom: 40px;
+
+    .container1-content {
+        margin-left: 1px;
+
+        .item__product {
+            padding:22px;
+        }
+    }
+}
+
+.contaner-title {
+    font-family: Poppins;
+    font-size: 30px;
+    font-weight: 600;
+    color: $title-text-color;
+}
+
+.container_title-text {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: .5px;
+    color: $text-color;
+    font-family: Poppins;
+    margin-bottom:20px;
+}
+
+.container_content-product{
+
+}
+
+.container_content-product {
+    margin-bottom: 50px;
+
+    .sale-product-imgs {
+        height: 425px ;
+    }
+    .discount_product {
+        position: absolute;
+        color:$white-color;
+        top :10px;
+        right:20px ;
+        width : 60px;
+        height : 25px;
+        background-color: red;
+        font-size: 14px;
+        line-height:25px;
+        font-weight: 400;
+        font-family: $Inter;
+    }
+ 
+    .sale_product-price {
+        float:left;
+        margin-right: 5px;
+        font-size: 14px;
+        font-weight:400;
+        
+    }
+    .sale_product-link {
+        text-align:start;
+    }
+    .sale_product-price.sale {
+        text-decoration: line-through;
+    }
+
+    .sale_product-price.saled {
+        color:$color-h;
+    }
+   
+
+}

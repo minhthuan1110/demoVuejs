@@ -1,0 +1,48 @@
+Cấu trúc thư mục của vueJS.
+
+src: source : chính thức :
+file:
+        + main.js: file gốc nó sẽ chạy đến file này 
+
+        + App.vue : là cái file component gốc hoặc là tổng .
+
+        + assets: là chứa tất cả các file tĩnh  như : ảnh , font chữ, video, ...
+
+        + Components: Dùng để  chứa các component con.
+
+
+
+Componet là gì : componet là bất kì một cái gì header cũng là component hặc button cũng là componet.
+
+    + componet gồm 3 thành phần chính: 
+        - Thành phần hiển thị : chính là : Template(html ) => là hiển thị.
+        - Thành phần script: đây là viết xử lý js.
+        - Styte:
+                 -viết css ( nó hỗ  trợ viết scss ).
+                 - Scoped style: cái file dành riêng cho componet
+
+        lưu ý: cái style viết thông thường thì nó có thể  style cho  tất cả các componet.
+                - còn để định dạng là scoped : thì có là css dành riêng cho componet đó. <style scoped></style>.
+    
+    + Tạo một component: 
+                Ta phải viết đuôi : .vue ;
+                import : vào file component gốc;
+                khai báo : khai báo vào component.
+
+root element: cái này là bắt buộc  luôn luôn phải có một cái Element bọc ngoài hai cái Element.
+
+
+
+ VueJs : là kiểu dữ liệu hai chiều:
+ 
+ Tow way binding: đây là mô hình bind dữ liệu hai chiều. 
+
+   hàm data luôn chả về một cái object dữ liệu ta cần. và trả về kiểu dữ liệu ta cần.
+
+   lifecycle : vòng đời của components trong vul.
+
+   moused: là trạng thái được thêm dom .
+   unmoused: là component gỡ ra khỏi dom.
+
+
+v-bind: thêm một id từ phía dưới lên trên.
